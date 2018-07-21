@@ -4,8 +4,6 @@ import { Route, BrowserRouter, Switch, Redirect } from 'react-router-dom'
 
 import Layout from './components/Layout';
 import Home from './components/Home';
-import Contact from './components/Contact';
-import About from './components/About';
 import Error from './components/Error';
 import MenuExample from './components/Menu';
 import Insurance from './components/Insurance';
@@ -38,8 +36,6 @@ class App extends Component {
             <Switch>
               <Route path="/Login" component={LoginHandler} exact />
               <PrivateRoute path="/" exact component={Home} getCarVins={this.setcarVins} />
-              <PrivateRoute path="/Contact" component={Contact} exact />
-              <PrivateRoute path="/About" component={About} exact />
               <PrivateRoute path="/AddCar" component={AddCar} exact />
               <PrivateRoute path="/Insurance" component={Insurance} exact carvin={this.state.carsVin} />
               <PrivateRoute path="/Market" component={Market} exact />
@@ -47,7 +43,6 @@ class App extends Component {
             </Switch>
           </Layout>
         </BrowserRouter>
-
       </div>
     );
   }

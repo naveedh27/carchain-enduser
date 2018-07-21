@@ -74,7 +74,7 @@ class LoginHandler extends Component {
                             <input type='Password' placeholder='Password' />
                         </Form.Field>
                         <Button primary
-                            onClick={() => this.login(this.state.userName)}>Submit</Button>
+                            onClick={() => this.login(this.state.userName)}>Login</Button>
                         <Message
                             error
                             header='Action Forbidden'

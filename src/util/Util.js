@@ -1,11 +1,12 @@
 //import axios from 'axios';
 
 var user = {
-    isAuthenticated: true,
-    name: 'Naveedh',
-    balance : 0,
-    contact : '',
-    email : '',
+    isAuthenticated: false,
+    name: '',
+    balance: 0,
+    contact: '',
+    email: '',
+    vins: '',
     async authenticate(cb) {
 
         let response;
@@ -14,25 +15,23 @@ var user = {
 
             response = await fetch(endpoint.url + 'contactDetails/' + cb);
 
-           
+            if (response.status == '200') {
+                this.isAuthenticated = true;
+                this.name = cb;
+                let userDetails = (await response.json());
+                this.balance = userDetails.balance;
+                this.contact = userDetails.Phone;
+                this.email = userDetails.emailId;
+
+                return true;
+            }
 
         } catch (err) {
             console.error(err);
         }
 
 
-        if (response.status == '200') {
 
-            this.isAuthenticated = true;
-            this.name = cb;
-
-            let userDetails = (await response.json());
-            this.balance = userDetails.balance;
-            this.contact = userDetails.Phone;
-            this.email = userDetails.email;
-
-            return true;
-        }
         return false;
     },
     signout(cb) {
